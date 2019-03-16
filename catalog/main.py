@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for
 from flask import request, redirect, flash, make_response, jsonify
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from Data_Setup import Base, TractorName, ItemName,  User
+from catalog.Data_Setup import Base, TractorName, ItemName,  User
 from flask import session as login_session
 import random
 import string
@@ -13,14 +13,15 @@ import json
 import requests
 import datetime
 
-engine = create_engine('sqlite:///tractors.db',
-                       connect_args={'check_same_thread': False}, echo=True)
+engine = create_engine('postgresql://catalog:catalog@localhost/catalog')
+#engine = create_engine('sqlite:///tractors.db',
+#                       connect_args={'check_same_thread': False}, echo=True)
 Base.metadata.create_all(engine)
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 app = Flask(__name__)
 
-CLIENT_ID = json.loads(open('client_secrets.json',
+CLIENT_ID = json.loads(open('/var/www/catalog/catalog/client_secrets.json',
                             'r').read())['web']['client_id']
 APPLICATION_NAME = "Tractors"
 
