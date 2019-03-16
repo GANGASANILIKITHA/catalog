@@ -1,0 +1,39 @@
+
+
+{% include 'nav.html' %}
+<div class="main">
+{% block content %}
+
+<div class="" style="backgroung-color:indigo">
+		<div class="mr-sm-2 mb-2 col-sm-8" style="margin: 10px;">
+			<form action="{{ url_for('addTractorDetails',e0name=e0name)}}" method="POST">
+				<div class="panel panel-primary">
+				  <div class="panel-heading bg-success">Add tractor item Details</div>
+				  <div class="panel-body">
+				  	
+					  <div class="form-group">
+					  	<label class="text-primary" for="name">Enter Item Name</label>
+					    <input type="name" class="form-control" name="name" placeholder="Enter item Name:" pattern="[A-Za-z0-9 ]{1,}" title="Allow both Characters and Numbers " required>
+					  </div>
+					  <div class="form-group">
+					  	<label class="text-primary" for="engine">Enter engine capacity</label>
+					    <input type="text" class="form-control" name="engine" placeholder="Enter engine capacity" pattern="[A-Za-z0-9 ]{1,}" title="Allow Characters Only" required>
+					  </div>
+					  <div class="form-group">
+					  	<label class="text-primary" for="price">Enter item price</label>
+					    <input type="text" class="form-control" name="price" placeholder="Enter item price" pattern="[A-Za-z0-90.0-9.0 ]{1,}" title="Allow both characters and numbers and decimals" required>
+					  </div>
+					  <div class="text-primary" class="form-group">
+					  	<label for="liftcapacity">Enter liftcapacity</label>
+					    <input type="text" class="form-control" name="liftcapacity" placeholder="Enter item liftcapacity" pattern="[A-Za-z0-9 ]{1,}" title="Allow Characters Only" required>
+					  </div>
+					  <div class="form-group">
+					    <input type="text" class="form-control " name="tractornameid" value="{{ e0name }}" readonly>
+					  </div>
+				  </div> 
+				  <div class="panel-footer text-center"><input type="submit" class="btn btn-primary" value="Submit" style="color:white;background-color:lighterblue"></div>
+				</div>
+				</form>
+			</div>
+</div>
+{% endblock content %}
